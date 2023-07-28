@@ -1,13 +1,11 @@
 package com.example.contactsonfirebase
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.contactsonfirebase.databinding.MainActivityContactsListItemBinding
 
 class MainActivityRecyclerAdapter(
-    private val context: Context,
     private val arrayContacts: ArrayList<ContactModel>
 ) : RecyclerView.Adapter<MainActivityRecyclerAdapter.MyViewHolder>() {
 
@@ -22,16 +20,16 @@ class MainActivityRecyclerAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentContact = arrayContacts[position]
-        holder.bind(currentContact, context)
+        holder.bind(currentContact)
     }
 
     class MyViewHolder(private val binding: MainActivityContactsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(currentContact: ContactModel, context: Context) {
+        fun bind(currentContact: ContactModel) {
+            binding.contact = currentContact
             with(binding) {
-                textViewFirstName.text = currentContact.firstName
-                textViewLastName.text = " ${currentContact.lastName}"
-                textViewPhoneNumber.text = currentContact.phoneNumber
-                textViewEmail.text = currentContact.email
+
+                //space between first name and last name is achieved by the following line of code
+                textViewFirstName.text = "${currentContact.firstName} "
             }
         }
     }

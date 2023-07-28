@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d("TAG", "Document id: ${doc.id}, data: ${doc.data}")
                 }
                 binding.recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
-                binding.recyclerView.adapter = MainActivityRecyclerAdapter(this@MainActivity, arrayContacts)
+                binding.recyclerView.adapter = MainActivityRecyclerAdapter(arrayContacts)
             }
             .addOnFailureListener {
                 Toast.makeText(this@MainActivity, "Data retrieval failed", Toast.LENGTH_SHORT)
